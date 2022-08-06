@@ -1,0 +1,235 @@
+$Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+$Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+$Grayish-Blue: hsl(212, 23%, 69%);
+$Light-Grayish-Blue: hsl(210, 46%, 95%);
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-family: 'Manrope', sans-serif;
+    background-color: $Grayish-Blue;
+    justify-content: center;
+    height: 100vh;
+}
+
+ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+li {
+    padding: 0px 10px;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.p-absolute {
+    position: absolute;
+    z-index: 10;
+}
+
+
+.card {
+    width: 95%;
+    max-width: 350px;
+    margin: 20px auto;
+    background-color: $Light-Grayish-Blue;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+
+    &__img {
+        height: 250px;
+        overflow: hidden;
+
+        img {
+            width: 110%;
+        }
+    }
+
+    &__content {
+        padding: 0px 25px;
+
+        &--heading {
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        &--description {
+            color: $Desaturated-Dark-Blue;
+            line-height: 1.8;
+            width: 91%;
+        }
+
+        &--footer {
+            position: relative;
+            padding: 10px 0px;
+
+            .btn-share {
+                position: absolute;
+                display: inline-flex;
+                top: 20px;
+                right: 20px;
+                background-color: $Grayish-Blue;
+                padding: 10px;
+                border-radius: 50%;
+                z-index: 100;
+                cursor: pointer;
+
+                img {
+                    transition: all 300ms;
+                }
+
+                &:hover {
+                    img {
+                        filter: brightness(2);
+                    }
+                }
+
+                &:hover+.card__content--hover {
+                    bottom: 0px;
+                }
+            }
+        }
+
+        &--image {
+            img {
+                width: 50px;
+                border-radius: 50%;
+            }
+        }
+
+        &--name {
+            padding-left: 15px;
+
+            p {
+                font-weight: 700;
+                margin: 0px 0px 3px 0px;
+            }
+
+            span {
+                color: $Desaturated-Dark-Blue;
+            }
+        }
+
+        &--hover {
+            background: $Very-Dark-Grayish-Blue;
+            padding: 0px 30px;
+            position: absolute;
+            width: 111%;
+            height: 100%;
+            bottom: -100%;
+            left: -25px;
+            z-index: 10;
+            transition: all 500ms;
+
+            &:hover {
+                bottom: 0px;
+            }
+
+            &:hover~.btn-share img {
+                filter: brightness(2) !important;
+            }
+
+            span {
+                letter-spacing: 3px;
+                font-weight: 500;
+                color: $Desaturated-Dark-Blue;
+            }
+
+            img {
+                transition: all 500ms;
+            }
+
+            img:hover {
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+
+}
+
+
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+}
+
+@media (min-width:1024px) {
+    .card {
+        flex-direction: row;
+        max-width: 875px;
+        overflow: initial;
+
+        &__img {
+            height: 100%;
+            max-height: 280px;
+            display: flex;
+        }
+
+        &__content {
+            width: 80%;
+
+            &--heading {
+                font-size: 1.6em;
+            }
+
+            &--description {
+                width: 97%;
+            }
+
+            &--footer .btn-share {
+                &:hover~.card__content--hover {
+                    opacity: 1;
+                    bottom: 70px;
+                    z-index: 10;
+                }
+            }
+
+            &--hover {
+                background: #48556a;
+                padding: 0px 30px;
+                position: absolute;
+                border-radius: 10px;
+                bottom: 60px;
+                left: 60%;
+                z-index: -1;
+                width: fit-content;
+                transition: all 500ms;
+                opacity: 0;
+
+                &::after {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    border-left: 50px solid #48556a;
+                    border-top: 25px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    position: absolute;
+                    transform: rotate(90deg);
+                    z-index: -1;
+                    top: 37px;
+                    left: 95px;
+                }
+
+                &:hover {
+                    opacity: 1;
+                    bottom: 70px;
+                    z-index: 10;
+                }
+            }
+        }
+    }
+}
